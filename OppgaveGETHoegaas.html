@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        div {
+            color: blue;
+            background-color: lightblue;
+            padding: 10px;
+            margin: 10px;
+            border: solid green 2px;
+            height: 30px;
+            width: 30px;
+            float: left;
+        }
+
+            div.førstpåLinja {
+                clear: left;
+            }
+    </style>
+
+</head>
+<body>
+
+    <div id="r1k1" onclick="Trykk(this,'r2k2','r2k1','r1k2','r1k2')">7</div>
+    <div id="r1k2" onclick="Trykk(this,'r2k2','r1k1','r1k3','r1k3')">1</div>
+    <div id="r1k3" onclick="Trykk(this,'r2k2','r1k2','r2k3','r2k3')">2</div>
+
+    <div id="r2k1" class="førstpåLinja" onclick="Trykk(this,'r2k2','r1k1','r3k1','r3k1')">5</div>
+    <div id="r2k2" onclick="Trykk(this,'r2k1','r1k2','r2k3','r3k2')"></div>
+    <div id="r2k3" onclick="Trykk(this, 'r2k2','r1k3','r3k3','r3k3')">3</div>
+
+    <div id="r3k1" class="førstpåLinja" onclick="Trykk(this,'r2k2','r3k2','r2k1','r2k1')">8</div>
+    <div id="r3k2" onclick="Trykk(this,'r2k2','r3k1','r3k3','r3k3')">4</div>
+    <div id="r3k3" onclick="Trykk(this,'r2k2','r2k3','r3k2','r3k2')">6</div>
+
+    <script>
+    var allDivs = document.getElementsByTagName("div")
+
+    function Trykk(tagElement, alt1, alt2, alt3, alt4) {
+            if (document.getElementById(alt1).innerHTML == '') {
+                document.getElementById(alt1).innerHTML = tagElement.innerHTML;
+                tagElement.innerHTML= '';
+            }
+            if (document.getElementById(alt2).innerHTML == '') {
+                document.getElementById(alt2).innerHTML = tagElement.innerHTML;
+                tagElement.innerHTML= '';
+            }
+            if (document.getElementById(alt3).innerHTML == '') {
+                document.getElementById(alt3).innerHTML = tagElement.innerHTML;
+                tagElement.innerHTML = '';
+            }
+            if (document.getElementById(alt4).innerHTML == '') {
+                document.getElementById(alt4).innerHTML = tagElement.innerHTML;
+                tagElement.innerHTML = '';
+        } winCondition();
+
+        }
+
+        function winCondition() {
+            console.log(allDivs);
+            if (allDivs[0].innerText == "1" && allDivs[1].innerText == "2" && allDivs[2].innerText == "3"
+                && allDivs[3].innerText == "4" && allDivs[4].innerText == "5" && allDivs[5].innerText == "6"
+                && allDivs[6].innerText == "7" && allDivs[7].innerText == "8" && allDivs[8].innerText == "" 
+            ) {
+                return alert("win!");
+            }
+        }
+
+      
+    </script>
+</body>
+</html>
