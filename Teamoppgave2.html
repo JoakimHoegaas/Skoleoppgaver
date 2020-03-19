@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #output{
+            height: 150px;
+            width: 150px;
+        }
+        select{
+            float: left;
+        }
+    
+    </style>
+</head>
+<body>
+
+    <div> Vi møtes klokka ...</div> <div> Vi møtes klokka ...</div> 
+
+    
+   <div id="output"></div>
+     
+    <select id="colorChooser" onchange="showDiv(this)">
+        <option value="7">7</option>
+        <option selected value="8">8</option>
+        <option value="6">6</option>
+   </select>
+   <select id="borderChooser" onchange="addBorder(this)">
+        <option value="black">black</option>
+        <option selected value="gray">gray</option>
+        <option value="">none</option>
+   </select> 
+
+   
+<!-- lag en slider -->
+ 
+
+<script>
+    //en variabel somhenter verdien fra slider
+const outputDiv = document.getElementById("output");
+showDiv();
+function showDiv(selectedColor) {
+    if(selectedColor.value == "7")outputDiv.style.backgroundColor = "yellow";
+    if(selectedColor.value == "8")outputDiv.style.backgroundColor = "red";
+    if(selectedColor.value == "6")outputDiv.style.backgroundColor = "blue";
+    
+    outputDiv.innerText = selectedColor.value;
+  
+}
+
+function addBorder(selectedBorder){
+   
+    if(selectedBorder.value != ""){
+        outputDiv.style.border = " 1px solidf "+ selectedBorder.value;  
+        // outputDiv.style.border-radius = "verdi fra variabel som henter verdi fra slider her"
+    }
+}
+
+
+
+</script>
+
+</body>
+</html>
